@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: urlshortkaro
+
+  profiles:
+    active: dev
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+
+app:
+  url:
+    default-expiry-days: 30
+    short-code-length: 7
+    short-code-charset: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    max-retry-count: 5

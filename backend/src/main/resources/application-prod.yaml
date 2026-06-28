@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://<host>:5432/urlshortkaro
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    show-sql: false
+
+server:
+  port: 8080
+
+app:
+  url:
+    domain: https://urlshortkaro.com
