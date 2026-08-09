@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/urlshortkaro
+    username: postgres
+    password: postgres
+
+  jpa:
+    show-sql: true
+
+server:
+  port: 8080
