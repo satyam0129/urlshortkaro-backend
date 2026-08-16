@@ -20,7 +20,7 @@ public class UrlMapper {
 
         response.setId(url.getId());
         response.setShortCode(url.getShortCode());
-        response.setShortUrl(urlProperties.getBaseUrl() + "/" + url.getShortCode());
+        response.setShortUrl(urlProperties.getBaseUrl() + "/urls/" + url.getShortCode());
         response.setOriginalUrl(url.getOriginalUrl());
         response.setExpiresAt(url.getExpiresAt());
         response.setCreatedAt(url.getCreatedAt());
