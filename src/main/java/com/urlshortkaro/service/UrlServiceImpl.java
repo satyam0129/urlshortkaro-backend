@@ -127,4 +127,34 @@ public class UrlServiceImpl implements UrlService {
                 ErrorCode.SHORT_CODE_GENERATION_FAILED
         );
     }
+
+    @Override
+    public void deactivate(Long id) {
+        Url url = urlRepository.findById(id)
+                .orElseThrow(() ->
+                        new UrlNotFoundException(ErrorCode.URL_NOT_FOUND));
+
+        url.setActive(false);
+        url.setUpdatedAt(LocalDateTime.now(clock));
+        urlRepository.save(url);
+    }
+
+    private static final int REACTIVATION_EXPIRY_DAYS = 15;
+
+    @Override
+    public CreateShortUrlResponse reactivate(Long id) {
+        Url url = urlRepository.findById(id)
+                .orElseThrow(() ->
+                        new UrlNotFoundException(ErrorCode.URL_NOT_FOUND));
+
+        LocalDateTime now = LocalDateTime.now(clock);
+
+        url.setActive(true);
+        url.setExpiresAt(now.plusDays(REACTIVATION_EXPIRY_DAYS));
+        url.setUpdatedAt(now);
+
+        Url savedUrl = urlRepository.save(url);
+
+        return urlMapper.toCreateShortUrlResponse(savedUrl);
+    }
 }

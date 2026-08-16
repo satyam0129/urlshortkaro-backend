@@ -11,4 +11,8 @@ public interface UrlService {
     CreateShortUrlResponse create(@Valid CreateShortUrlRequest request);
 
     URI getRedirectUrl(String shortCode);
+
+    void deactivate(Long id);
+
+    CreateShortUrlResponse reactivate(Long id);
 }

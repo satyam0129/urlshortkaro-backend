@@ -43,4 +43,25 @@ public class UrlController {
                 .build();
     }
 
+    @PatchMapping("/{id}/deactivate")
+    public ResponseEntity<Void> deactivate(
+            @PathVariable Long id) {
+
+        urlService.deactivate(id);
+
+        return ResponseEntity
+                .noContent()
+                .build();
+    }
+
+    @PatchMapping("/{id}/reactivate")
+    public ResponseEntity<CreateShortUrlResponse> reactivate(
+            @PathVariable Long id) {
+
+        CreateShortUrlResponse response = urlService.reactivate(id);
+
+        return ResponseEntity
+                .ok(response);
+    }
+
 }
